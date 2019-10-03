@@ -1,6 +1,10 @@
 const React = require('react');
 const ReactRedux = require('react-redux');
 
+const Notebook = require('./Notebook');
+const ActiveNotebook = require('./ActiveNotebook');
+
+
 const createActionDispatchers = require('../helpers/createActionDispatchers');
 const notebooksActionCreators = require('../reducers/notebooks');
 
@@ -13,12 +17,16 @@ const notebooksActionCreators = require('../reducers/notebooks');
 class NotebookList extends React.Component {
   render() {
     const createNotebookListItem = (notebook) => {
-      return (
-        <li key={notebook.id}>
-          {notebook.title}
-        </li>
-      )
-    }
+      console.log("notebook.id :" + notebook.id);
+      console.log("activeNotebook.id :" + this.props.notebooks.activeNotebookId);
+
+      if(notebook.id === this.props.activeNotebookId)
+      {
+        return<ActiveNotebook key={notebook.id} notebook={notebook} notes={this.props.notebooks.notes} />;
+      }
+        return<Notebook key = {notebook.id} notebook={notebook} loadNotes={this.props.loadNotes}/>;
+
+  };
 
     return (
       <div>
@@ -31,9 +39,11 @@ class NotebookList extends React.Component {
   }
 }
 
+
 const NotebookListContainer = ReactRedux.connect(
   state => ({
-    notebooks: state.notebooks
+    notebooks: state.notebooks,
+    notes: state.notes
   }),
   createActionDispatchers(notebooksActionCreators)
 )(NotebookList);
