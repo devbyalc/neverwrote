@@ -1,1 +1,53 @@
 /* *** TODO: Put your CSS styles here to make the web application look nice *** */
+
+.jumbotron {
+		text-align: center;
+		font-family:Times;
+		color: #FFE5D1;
+		background-color:rgba(81,30,30,1)
+	}
+#page-header{
+		font-size: 150px;
+		font-weight: bolder;
+}
+#welcome{
+	font-size:30px;
+	font-weight: lighter;
+	color: #FFE5D1;
+}
+
+h1,h2{
+	font-family:Times;
+	color:rgba(81,30,30,1);
+}
+
+#header{
+		font-size:65px;
+		font-weight: bold;
+}
+
+.btn-primary:hover{
+	background-color:rgba(81,30,30,1);
+}
+.list-group-item-heading{
+	font-size:40;
+	font-weight: bold;
+}
+.list-group-item{
+	padding: 30px;
+}
+.list-group{
+	padding-top:20px;
+}
+a:hover{
+	color:rgba(81,30,30,1);
+}
+.note{
+	padding-bottom: 40px;
+}
+#savebtn{
+	padding-top: 10px;
+}
+#cancelbtn{
+	padding-top: 10px;
+}

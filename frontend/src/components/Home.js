@@ -14,13 +14,18 @@ const NotebookList = require('./NotebookList');
   fit while working on the assignment.
 */
 const Home = () => (
-  <div className="container">
-    <h1>Neverwrote</h1>
-    <p>
-      This placeholder text was rendered by the <code>Home</code> component.
+  <div>
+  <div className="jumbotron text-center">
+    <h1 id="page-header">Neverwrote</h1>
+    <p id='welcome'>
+     "Never say 'I never wrote that down' ever again!"
     </p>
-    <NotebookList />
-  </div>
+    </div>
+    <div className="container">
+          <NotebookList />
+    </div>
+
+    </div>
 );
 
 module.exports = Home;

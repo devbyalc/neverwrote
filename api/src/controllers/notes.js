@@ -25,7 +25,6 @@ router.get('/:noteId',(req,res) => {
   .then(note => res.json(note))
   .catch(err => res.status(500).json({ error: err.message }));
 });
-
 router.delete('/:noteId',(req,res) => {
   models.Note.findById(req.params.noteId)
     .then(note => note.destroy())

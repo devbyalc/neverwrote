@@ -3,10 +3,14 @@ const ReactRedux = require('react-redux');
 
 const Notebook = require('./Notebook');
 const ActiveNotebook = require('./ActiveNotebook');
+const NewNotebook= require('./NewNotebook');
 
 
 const createActionDispatchers = require('../helpers/createActionDispatchers');
 const notebooksActionCreators = require('../reducers/notebooks');
+const notesActionCreators = require('../reducers/notes');
+
+//const ActionCreators =[notebooksActionCreators,notesActionCreators];
 
 /*
   *** TODO: Build more functionality into the NotebookList component ***
@@ -15,26 +19,38 @@ const notebooksActionCreators = require('../reducers/notebooks');
   you will need to build upon it in order to complete the assignment.
 */
 class NotebookList extends React.Component {
+   constructor(props){
+    super(props)
+
+    this.state = {
+      search: ''
+    }
+  }
+
+
   render() {
     const createNotebookListItem = (notebook) => {
-      console.log("notebook.id :" + notebook.id);
-      console.log("activeNotebook.id :" + this.props.notebooks.activeNotebookId);
 
-      if(notebook.id === this.props.activeNotebookId)
+      if(notebook.id === this.props.notes.activeNotebookId)
       {
-        return<ActiveNotebook key={notebook.id} notebook={notebook} notes={this.props.notebooks.notes} />;
-      }
-        return<Notebook key = {notebook.id} notebook={notebook} loadNotes={this.props.loadNotes}/>;
+        return<ActiveNotebook key={notebook.id} notebook={notebook} createNote={this.props.createNote}
 
+        searchNote={this.props.searchNote} noteDelete={this.props.deleteNote} activeNote={this.props.notes}
+        notes={this.props.notes.notes} loadContent={this.props.loadContent} />;
+      }
+        return<Notebook key = {notebook.id} notebook={notebook} loadNotes={this.props.loadNotes} onDelete={this.props.deleteNotebook} />
   };
 
     return (
-      <div>
-        <h2>Notebooks</h2>
-        <ul>
+      <div className="row">
+      <h1 id='header'>Notebooks</h1>
+       <NewNotebook createNotebook={this.props.createNotebook} />
+
+      <div className="list-group">
           {this.props.notebooks.data.map(createNotebookListItem)}
-        </ul>
       </div>
+      </div>
+
     );
   }
 }
@@ -45,7 +61,7 @@ const NotebookListContainer = ReactRedux.connect(
     notebooks: state.notebooks,
     notes: state.notes
   }),
-  createActionDispatchers(notebooksActionCreators)
+  createActionDispatchers(notebooksActionCreators,notesActionCreators)
 )(NotebookList);
 
 module.exports = NotebookListContainer;
