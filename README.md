@@ -1,5 +1,5 @@
 # CSE2WDC/CSE5WDC Assignment: Neverwrote
-
+Alicia worked mainly on the REST API and the FrontEnd 
 
 ## Getting started
 
