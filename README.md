@@ -3,6 +3,8 @@ Alicia worked mainly on the REST API and the FrontEnd
 
 Ideal Environment of this project would be a linux computer
 
+Warning: Code has not been maintained since 2019
+
 ## Command reference
 
 ### Run backend API tests
