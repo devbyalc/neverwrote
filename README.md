@@ -1,5 +1,5 @@
 # CSE2WDC/CSE5WDC Assignment: Neverwrote
-Alicia worked mainly on the REST API and the FrontEnd 
+Alicia worked mainly on the API and the FrontEnd 
 
 Ideal Environment of this project would be a linux computer
 
